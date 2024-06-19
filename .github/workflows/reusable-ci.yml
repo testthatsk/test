@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  build:
+    uses: testthatsk/.github/workflow-templates/reusable-ci.yml@main
+
