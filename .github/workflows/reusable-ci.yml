@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    permissions: write-all  
     uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
 
 
