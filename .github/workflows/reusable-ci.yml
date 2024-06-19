@@ -10,6 +10,6 @@ on:
 
 jobs:
   build:
-    uses: testthatsk/.github/.github/workflow-templates/ci-java-testing.yml@main
+    uses: testthatsk/.github/workflow-templates/ci-java-testing.yml@main
 
 
