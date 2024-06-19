@@ -10,5 +10,6 @@ on:
 
 jobs:
   build:
-    uses: testthatsk/.github/workflow-templates/reusable-ci.yml@main
+    uses: testthatsk/.github/.github/workflow-templates/ci-java-testing.yml@main
+
 
