@@ -28,7 +28,10 @@ on:
 jobs:
   environment:
     name: production
-
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment name
+        run: echo "Environment: production"
   build:
     permissions: write-all  
     uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
