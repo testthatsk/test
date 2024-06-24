@@ -26,7 +26,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  environment:
+  environment: staging
     runs-on: ubuntu-latest
     steps:
       - name: Set environment name
