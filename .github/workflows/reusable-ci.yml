@@ -9,9 +9,9 @@ on:
         default: 'warning'
         type: choice
         options:
-        - info
-        - warning
-        - debug
+          - info
+          - warning
+          - debug
       tags:
         description: 'Test scenario tags'
         required: false
@@ -27,14 +27,20 @@ on:
 
 jobs:
   environment:
-    name: production
     runs-on: ubuntu-latest
     steps:
       - name: Set environment name
         run: echo "Environment: production"
+
   build:
-    permissions: write-all  
-    uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Run build script
+        uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
+
   log-the-inputs:
     runs-on: ubuntu-latest
     steps:
@@ -43,6 +49,7 @@ jobs:
           echo "Tags: $TAGS"
           echo "Environment: $ENVIRONMENT"
         env:
-          LEVEL: ${{ inputs.logLevel }}
-          TAGS: ${{ inputs.tags }}
-          ENVIRONMENT: ${{ inputs.environment }}
+          LEVEL: ${{ github.event.inputs.logLevel }}
+          TAGS: ${{ github.event.inputs.tags }}
+          ENVIRONMENT: ${{ github.event.inputs.environment }}
+
