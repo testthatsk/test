@@ -30,6 +30,8 @@ jobs:
     permissions: write-all  
     uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
   log-the-inputs:
+    environment:
+      name: staging
     runs-on: ubuntu-latest
     steps:
       - run: |
