@@ -9,13 +9,17 @@ on:
         default: 'warning'
         type: choice
         options:
-          - info
-          - warning
-          - debug
+        - info
+        - warning
+        - debug
       tags:
         description: 'Test scenario tags'
         required: false
         type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true    
   push:
     branches: [ "main" ]
   pull_request:
@@ -23,20 +27,16 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    permissions: write-all
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Run build script
-        uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
+    permissions: write-all  
+    uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
   log-the-inputs:
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
+          echo "Environment: $ENVIRONMENT"
         env:
-          LEVEL: ${{ github.event.inputs.logLevel }}
-          TAGS: ${{ github.event.inputs.tags }}
-
+          LEVEL: ${{ inputs.logLevel }}
+          TAGS: ${{ inputs.tags }}
+          ENVIRONMENT: ${{ inputs.environment }}
