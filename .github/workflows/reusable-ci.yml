@@ -26,6 +26,9 @@ on:
     branches: [ "main" ]
 
 jobs:
+  environment:
+    name: production
+
   build:
     permissions: write-all  
     uses: testthatsk/.github/.github/workflows/ci-java-testing.yml@main
