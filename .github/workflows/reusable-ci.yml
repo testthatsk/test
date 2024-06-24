@@ -27,11 +27,6 @@ on:
 
 jobs:
   environment: staging
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set environment name
-        run: echo "Environment: production"
-
   build:
     runs-on: ubuntu-latest
     permissions: write-all
